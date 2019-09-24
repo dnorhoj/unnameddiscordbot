@@ -13,7 +13,7 @@ To set this bot up you need to do a few things.
 First of all you need to install the requirements.
 Make sure that you have python3 and pip3 installed and that they are both in your path. Then run this command:
 
-    pip install -U -r requirements.txt
+    pip3 install -U -r requirements.txt
 
 ### Setting up `.env`
 
