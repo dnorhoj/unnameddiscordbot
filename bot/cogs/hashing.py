@@ -39,6 +39,7 @@ class Hashing(commands.Cog):
 		"""Encode/decode base32"""
 		self.bot.help_command.context = ctx
 		await self.bot.help_command.send_group_help(ctx.command)
+	
 	@base32.group(name="encode", aliases=["e"]) # Base64 encoding command
 	async def b32encode(self, ctx, *, text:str):
 		encoded = base64.b32encode(text.encode()).decode() # Encode text

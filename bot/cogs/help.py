@@ -8,14 +8,22 @@ class HelpCommand(commands.HelpCommand):
 	#        'help': 'Shows help about the bot, a command, or a category'
 	#    })
 
-	def _get_dnorhoj(self):
-		return self.context.bot.get_user(281409966579908608)
-
+	def add_footer(self, ctx, embed):
+		bot = ctx.bot
+		return embed.set_footer(
+			icon_url=bot.owner.avatar_url_as(format="png"),
+			text=f"Bot made by {bot.owner.name}#{bot.owner.discriminator}"
+		)
 
 	async def on_help_command_error(self, ctx, error):
+		bot = self.context.bot
 		if isinstance(error, commands.CommandInvokeError):
-			dnorhoj = self._get_dnorhoj()
-			error_embed = discord.Embed(title="<:tcdisagree:623642279856570408> Error!", description=f"Unknown error!\nPlease message @{dnorhoj.name}#{dnorhoj.discriminator} if you've found an error.", color=discord.Color.red())
+			error_embed = discord.Embed(
+				title="<:tcdisagree:623642279856570408> Error!",
+				description=f"Unknown error!\nPlease message the bot owner if you've found an error.",
+				color=discord.Color.red()
+			)
+			error_embed = self.add_footer(self.context, error_embed)
 			await ctx.send(embed=error_embed)
 
 	def get_command_signature(self, command):
@@ -31,7 +39,10 @@ class HelpCommand(commands.HelpCommand):
 		return f'{self.context.prefix}{alias} {command.signature}'
 
 	async def command_not_found(self, string):
-		embed = discord.Embed(title="<:tcdisagree:623642279856570408> The command '{}' was not found!".format(string), color=discord.Color.red())
+		embed = discord.Embed(
+			title="<:tcdisagree:623642279856570408> The command '{}' was not found!".format(string),
+			color=discord.Color.red()
+		)
 		await self.context.send(embed=embed)
 
 	async def send_error_message(self, error):
@@ -47,9 +58,8 @@ class HelpCommand(commands.HelpCommand):
 		bot = self.context.bot
 		entries = await self.filter_commands(bot.commands, sort=True, key=key)
 
-		dnorhoj = self._get_dnorhoj() # dnorhoj's id to make the credit dynamic
 		help_embed = discord.Embed(title="Command list", color=discord.Color.green())
-		help_embed.set_footer(icon_url=dnorhoj.avatar_url_as(format="png"), text=f"Bot made by {dnorhoj.name}#{dnorhoj.discriminator}")
+		help_embed = self.add_footer(self.context, help_embed)
 
 		for cog, commands in itertools.groupby(entries, key=key):
 			commands = sorted(commands, key=lambda c: c.name)
@@ -69,9 +79,8 @@ class HelpCommand(commands.HelpCommand):
 	async def send_cog_help(self, cog):
 		entries = await self.filter_commands(cog.get_commands(), sort=True)
 
-		dnorhoj = self._get_dnorhoj() # dnorhoj's id to make the credit dynamic
 		help_embed = discord.Embed(color=discord.Color.green())
-		help_embed.set_footer(icon_url=dnorhoj.avatar_url_as(format="png"), text=f"Bot made by {dnorhoj.name}#{dnorhoj.discriminator}")
+		help_embed = self.add_footer(self.context, help_embed)
 
 		description = cog.description or "No description"
 
@@ -85,8 +94,7 @@ class HelpCommand(commands.HelpCommand):
 		# No pagination necessary for a single command.
 		embed = discord.Embed(title="Usage", colour=discord.Colour.green())
 
-		dnorhoj = self._get_dnorhoj() # dnorhoj's id to make the credit dynamic
-		embed.set_footer(icon_url=dnorhoj.avatar_url_as(format="png"), text=f"Bot made by {dnorhoj.name}#{dnorhoj.discriminator}")
+		embed = self.add_footer(self.context, embed)
 
 		description = []
 		description.append(command.help or 'No description')
@@ -109,9 +117,8 @@ class HelpCommand(commands.HelpCommand):
 		for entry in entries:
 			description.append("`{}`".format(self.get_command_signature(entry)))
 
-		dnorhoj = self._get_dnorhoj() # dnorhoj's id to make the credit dynamic
 		help_embed = discord.Embed(title="Usage", color=discord.Color.green())
-		help_embed.set_footer(icon_url=bot.dnorhoj.avatar_url_as(format="png"), text=f"Bot made by {bot.dnorhoj.name}#{bot.dnorhoj.discriminator}")
+		help_embed = self.add_footer(self.context, help_embed)
 
 		help_embed.add_field(name=group.name, value="\n".join(description))
 

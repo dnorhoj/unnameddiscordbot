@@ -24,7 +24,7 @@ bot = commands.Bot(command_prefix=get_command_prefix)
 
 @bot.event
 async def on_ready():
-	bot.dnorhoj = bot.get_user(281409966579908608)
+	bot.owner = bot.get_user(config['owner_id'])
 	print("""---Info---
 	Successfully started.
 	Running on user: {}

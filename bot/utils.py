@@ -12,6 +12,6 @@ async def impersonate(bot: commands.bot.Bot, message: str, user: discord.User, c
 
     webhook = await channel.create_webhook(name=f"[HWBot] {member.name} impersonator")
     
-    username = f"[HWBot] {member.display_name}"
+    username = f"[Bot] {member.display_name}"
     await webhook.send(message, username=username, avatar_url=user.avatar_url)
     await webhook.delete()
