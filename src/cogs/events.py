@@ -11,6 +11,7 @@ class Events(commands.Cog):
 			commands.errors.CheckFailure: "You don't have permission to do this!",
 			commands.errors.MissingRequiredArgument: "Missing Argument!\nHelp command can help you with the usage.",
 			commands.errors.BadArgument: "Invalid argument!",
+			commands.errors.CommandNotFound: "Command not found!"
 		}
 
 		if not type(error) in errors:

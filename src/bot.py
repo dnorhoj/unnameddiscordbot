@@ -8,7 +8,20 @@ import asyncio
 import praw
 
 load_dotenv()
-config = json.load(open("config/config.json"))
+
+CONFIG_LOCATION = "config/config.json"
+DEFAULT_CONFIG_LOCATION = "config/default_config.json"
+
+# Check if config file exists
+# If not, it will create a new config with default values
+try:
+	config_file = open(CONFIG_LOCATION)
+except FileNotFoundError:
+	config_file = open(CONFIG_LOCATION, "w+")
+	default_config_file = open(DEFAULT_CONFIG_LOCATION)
+	config_file.write(default_config_file.read())
+
+config = json.load(config_file)
 
 async def get_command_prefix(bot, msg):
 	prefixes = []
@@ -25,8 +38,11 @@ bot = commands.Bot(command_prefix=get_command_prefix)
 
 @bot.event
 async def on_ready():
+	# Set variables that will be accessible throughout
+	bot.config = config
 	bot.owner = bot.get_user(config['owner_id'])
 	bot.reddit = praw.Reddit(user_agent=config['user_agent'])
+
 	print("""---Info---
 	Successfully started.
 	Running on user: {}
@@ -38,7 +54,6 @@ cogs = [
 	"cogs.help",
 	"cogs.hashing",
 	"cogs.events",
-	"cogs.misc",
 	"cogs.fun",
 	"cogs.meming",
 ]
