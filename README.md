@@ -2,7 +2,7 @@
 
 I have no idea what I'll call this bot.
 
-This bot is made in Python 3.8 with the [discord.py](https://github.com/Rapptz/discord.py){:target="_blank"} library
+This bot is made in Python 3.8 with the [discord.py](https://github.com/Rapptz/discord.py) library
 
 ## Table of contents
 
@@ -24,7 +24,7 @@ To set this bot up you need to do a few things.
 
 ### Create a Discord bot
 
-1. First off, go to the [Discord developer portal](https://discord.com/developers/applications){:target="_blank"}
+1. First off, go to the [Discord developer portal](https://discord.com/developers/applications)
 2. Log in to your normal discord account
 3. Create a new Application
 4. Choose a name for the bot and have the team set to Personal
@@ -38,7 +38,7 @@ To set this bot up you need to do a few things.
 
 This will enable the bot to get memes and other image posts from reddit.
 
-1. Go to [Reddit application preferences](https://www.reddit.com/prefs/apps){:target="_blank"}
+1. Go to [Reddit application preferences](https://www.reddit.com/prefs/apps)
 2. Register or Log in to Reddit
 3. Create a new app by clicking on `Create another app...`
 4. Fill out the text fields
@@ -55,7 +55,7 @@ Make sure that you have python3 and pip3 installed and that they are both in you
 ### Setting up the environment
 
 This project requires a few environment variables to work.
-To load the environment variables I have chosen to use the Python library, [python-dotenv](https://pypi.org/project/python-dotenv/){:target="_blank"}.
+To load the environment variables I have chosen to use the Python library, [python-dotenv](https://pypi.org/project/python-dotenv/).
 
 Create a file at `bot/.env` the content should look like this:
 
@@ -85,6 +85,6 @@ I am not really looking for any contributions, but if you do want to make one, j
 
 # License
 
-This project uses the [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/){:target="_blank"} license.
+This project uses the [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/) license.
 
 The license is stated in [LICENSE](LICENSE).
