@@ -9,7 +9,7 @@ class Events(commands.Cog):
 	async def on_command_error(self, ctx, error):
 		errors = {
 			commands.errors.CheckFailure: "You don't have permission to do this!",
-			commands.errors.MissingRequiredArgument: "Missing Argument!",
+			commands.errors.MissingRequiredArgument: "Missing Argument!\nHelp command can help you with the usage.",
 			commands.errors.BadArgument: "Invalid argument!",
 		}
 

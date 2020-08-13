@@ -2,6 +2,7 @@ import discord, random, asyncio
 from discord.ext import commands
 
 class Fun(commands.Cog):
+	"""Just fun and games"""
 	def __init__(self, bot:discord.Client):
 		self.bot = bot
 

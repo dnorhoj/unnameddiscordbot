@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import utils
 import json
 import asyncio
+import praw
 
 load_dotenv()
 config = json.load(open("config/config.json"))
@@ -25,6 +26,7 @@ bot = commands.Bot(command_prefix=get_command_prefix)
 @bot.event
 async def on_ready():
 	bot.owner = bot.get_user(config['owner_id'])
+	bot.reddit = praw.Reddit(user_agent=config['user_agent'])
 	print("""---Info---
 	Successfully started.
 	Running on user: {}
@@ -37,7 +39,8 @@ cogs = [
 	"cogs.hashing",
 	"cogs.events",
 	"cogs.misc",
-	"cogs.fun"
+	"cogs.fun",
+	"cogs.meming",
 ]
 
 # Load cogs

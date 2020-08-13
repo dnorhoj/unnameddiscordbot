@@ -2,7 +2,7 @@ import discord, base64
 from discord.ext import commands
 
 class Hashing(commands.Cog):
-	"""Hashing commands, this is nice to get some fast encoding decoding and hashing done."""
+	"""For all of your encoding/decoding and hashing needs"""
 	def __init__(self, bot):
 		self.bot = bot
 	

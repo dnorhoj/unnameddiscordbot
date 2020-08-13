@@ -126,7 +126,7 @@ class HelpCommand(commands.HelpCommand):
 
 
 class Help(commands.Cog):
-	"""Display a list of commands or get commands in category"""
+	"""Helps you discover commands and get usage help"""
 	def __init__(self, bot):
 		self._original_help_command = bot.help_command
 		self.bot = bot
