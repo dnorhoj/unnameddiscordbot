@@ -17,9 +17,8 @@ DEFAULT_CONFIG_LOCATION = "config/default_config.json"
 try:
 	config_file = open(CONFIG_LOCATION)
 except FileNotFoundError:
-	config_file = open(CONFIG_LOCATION, "w+")
-	default_config_file = open(DEFAULT_CONFIG_LOCATION)
-	config_file.write(default_config_file.read())
+	open(CONFIG_LOCATION, "w+").write(open(DEFAULT_CONFIG_LOCATION).read())
+	config_file = open(CONFIG_LOCATION)
 
 config = json.load(config_file)
 
@@ -73,4 +72,4 @@ if __name__ == "__main__":
 	print("Loaded: {}".format(out))
 
 # Start bot
-bot.run(getenv("DISCORD_TOKEN"))
+bot.run(getenv("discord_token"))

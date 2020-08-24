@@ -15,7 +15,7 @@ class Fun(commands.Cog):
 			return
 
 		if bombs > gridsize**2:
-			embed = discord.Embed(title=":exclamation: Too many bombs.", description="Bomb amount is more than total grid.", colour=0xff0000)
+			embed = discord.Embed(title=":exclamation: Too many bombs.", description="Bomb amount is more than the total grid size.", colour=0xff0000)
 			await ctx.send(embed=embed)
 			return
 
